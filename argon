@@ -16,22 +16,22 @@ class GridWindow(Gtk.Window):
         self.entry1 = Gtk.Entry()
         self.entry1.connect("activate", self.button1sig)
 
-        self.button1 = Gtk.Button("install package")
+        self.button1 = Gtk.Button("Install Package")
         self.button1.connect("clicked", self.button1sig)
 
         self.entry2 = Gtk.Entry()
         self.entry2.connect("activate", self.button2sig)
 
-        self.button2 = Gtk.Button("remove package")
+        self.button2 = Gtk.Button("Remove Package")
         self.button2.connect("clicked", self.button2sig)
 
-        self.button5 = Gtk.Button("show tepp list")
+        self.button5 = Gtk.Button("TEPP List")
         self.button5.connect("clicked", self.button5sig)
 
-        self.button3 = Gtk.Button("configure notifier")
+        self.button3 = Gtk.Button("Configure Notifier")
         self.button3.connect("clicked", self.button3sig)
 
-        self.button4 = Gtk.Button("update system")
+        self.button4 = Gtk.Button("Update System")
         self.button4.connect("clicked", self.button4sig)
 
         grid.add(self.entry1)
@@ -55,7 +55,7 @@ class GridWindow(Gtk.Window):
         self.entry2.set_text("")
 
     def button5sig(self, configalter):
-        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'echo \"TEPPs - Top-level Explicitly-installed Post-base Packages\"; echo \"---------------------------------------------------------\"; echo \"\"; comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel | sort) | column; echo \"\"; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'echo \"---------------------------------------------------------\"; echo \"TEPPs - Top-level Explicitly-installed Post-base Packages\"; echo \"---------------------------------------------------------\"; echo \"\"; comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel | sort) | column; echo \"\"; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
         self.entry1.set_text("")
         self.entry2.set_text("")
 
