@@ -1,0 +1,75 @@
+#!/usr/bin/python
+
+from gi.repository import Gtk
+import os
+
+class GridWindow(Gtk.Window):
+
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Argon Package Manager")
+        self.set_border_width(8)
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_icon_from_file('/usr/share/argon/argon.png')
+        grid = Gtk.Grid(column_homogeneous=True,column_spacing=8,row_spacing=8)
+        self.add(grid) 
+
+        self.entry1 = Gtk.Entry()
+        self.entry1.connect("activate", self.button1sig)
+
+        self.button1 = Gtk.Button("install package")
+        self.button1.connect("clicked", self.button1sig)
+
+        self.entry2 = Gtk.Entry()
+        self.entry2.connect("activate", self.button2sig)
+
+        self.button2 = Gtk.Button("remove package")
+        self.button2.connect("clicked", self.button2sig)
+
+        self.button5 = Gtk.Button("show tepp list")
+        self.button5.connect("clicked", self.button5sig)
+
+        self.button3 = Gtk.Button("configure notifier")
+        self.button3.connect("clicked", self.button3sig)
+
+        self.button4 = Gtk.Button("update system")
+        self.button4.connect("clicked", self.button4sig)
+
+        grid.add(self.entry1)
+        grid.attach(self.button1,1,0,1,1)
+        grid.attach(self.entry2,0,1,1,1)
+        grid.attach(self.button2,1,1,1,1)
+        grid.attach(self.button3,0,2,1,1)
+        grid.attach(self.button5,1,2,1,1)
+        grid.attach(self.button4,0,3,2,1)
+
+    def button1sig(self, configalter):
+        package = self.entry1.get_text()
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'pacaur -S %s; echo''; read -p Press\ any\ key\ to\ return\ to\ Argon...'" % (package))
+        self.entry1.set_text("")
+        self.entry2.set_text("")
+
+    def button2sig(self, configalter):
+        package = self.entry2.get_text()
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'pacaur -Rs %s; echo''; read -p Press\ any\ key\ to\ return\ to\ Argon...'" % (package))
+        self.entry1.set_text("")
+        self.entry2.set_text("")
+
+    def button5sig(self, configalter):
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'echo \"TEPPs - Top-level Explicitly-installed Post-base Packages\"; echo \"---------------------------------------------------------\"; echo \"\"; comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel | sort) | column; echo \"\"; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
+        self.entry1.set_text("")
+        self.entry2.set_text("")
+
+    def button3sig(self, configalter):
+        os.system("argon-notifier-config")
+        self.entry1.set_text("")
+        self.entry2.set_text("")
+
+    def button4sig(self, configalter):
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'pacaur -Syu; echo''; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
+        self.entry1.set_text("")
+        self.entry2.set_text("")
+
+win = GridWindow()
+win.connect("delete-event", Gtk.main_quit)
+win.show_all()
+Gtk.main()
