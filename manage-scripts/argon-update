@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "-------------"
+echo "System Update"
+echo "-------------"
+echo ""
+pacaur -Syu
+echo ""
+echo "------------------------------------"
+echo "Close this window to return to Argon"
+echo "------------------------------------"
