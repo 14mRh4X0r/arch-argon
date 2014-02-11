@@ -25,7 +25,7 @@ class GridWindow(Gtk.Window):
         self.button2 = Gtk.Button("Remove Package")
         self.button2.connect("clicked", self.button2sig)
 
-        self.button5 = Gtk.Button("TEPP List")
+        self.button5 = Gtk.Button("TOP List")
         self.button5.connect("clicked", self.button5sig)
 
         self.button3 = Gtk.Button("Configure Notifier")
@@ -55,7 +55,7 @@ class GridWindow(Gtk.Window):
         self.entry2.set_text("")
 
     def button5sig(self, configalter):
-        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'echo \"---------------------------------------------------------\"; echo \"TEPPs - Top-level Explicitly-installed Post-base Packages\"; echo \"---------------------------------------------------------\"; echo \"\"; comm -23 <(pacman -Qetq) <(pacman -Qgq base base-devel | sort) | column; echo \"\"; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
+        os.system("gnome-terminal --full-screen --hide-menubar -x bash -c 'echo \"-------------------------------------\"; echo \"TOPs - Top-level Owner-added Packages\"; echo \"-------------------------------------\"; echo \"\"; comm -23 <(pacman -Qtq) <(pacman -Qgq base base-devel | sort) | column; echo \"\"; read -p Press\ any\ key\ to\ return\ to\ Argon...'")
         self.entry1.set_text("")
         self.entry2.set_text("")
 
