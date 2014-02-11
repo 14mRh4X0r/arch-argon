@@ -7,5 +7,5 @@ package=$(</etc/argon/package)
 pacaur -S $package
 echo ""
 echo "------------------------------------"
-echo "Close this window to return to Argon"
+echo "close this window to return to Argon"
 echo "------------------------------------"

@@ -1,11 +1,11 @@
 #!/bin/bash
-echo "------------------------------"
-echo "Top-level Owner-added Packages"
-echo "------------------------------"
+echo "---------------"
+echo "Package Removal"
+echo "---------------"
 echo ""
 package=$(</etc/argon/package)
 pacaur -Rs $package
 echo ""
 echo "------------------------------------"
-echo "Close this window to return to Argon"
+echo "close this window to return to Argon"
 echo "------------------------------------"

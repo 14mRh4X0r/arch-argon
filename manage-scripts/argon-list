@@ -1,10 +1,10 @@
 #!/bin/bash
-echo "------------------------------"
-echo "Top-level Owner-added Packages"
-echo "------------------------------"
+echo "-----------------------------"
+echo "Top-level User-added Packages"
+echo "-----------------------------"
 echo ""
 comm -23 <(pacman -Qtq) <(pacman -Qgq base base-devel | sort) | column
 echo ""
 echo "------------------------------------"
-echo "Close this window to return to Argon"
+echo "close this window to return to Argon"
 echo "------------------------------------"

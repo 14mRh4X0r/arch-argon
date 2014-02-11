@@ -6,5 +6,5 @@ echo ""
 pacaur -Syu
 echo ""
 echo "------------------------------------"
-echo "Close this window to return to Argon"
+echo "close this window to return to Argon"
 echo "------------------------------------"

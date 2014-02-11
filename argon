@@ -25,7 +25,7 @@ class GridWindow(Gtk.Window):
         self.button2 = Gtk.Button("Remove")
         self.button2.connect("clicked", self.button2sig)
 
-        self.button5 = Gtk.Button("TOP List")
+        self.button5 = Gtk.Button("TUP List")
         self.button5.connect("clicked", self.button5sig)
 
         self.button3 = Gtk.Button("Configure Notifier")
