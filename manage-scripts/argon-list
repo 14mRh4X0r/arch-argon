@@ -3,7 +3,9 @@ echo "-----------------------------"
 echo "Top-level User-added Packages"
 echo "-----------------------------"
 echo ""
-comm -23 <(pacman -Qtq) <(pacman -Qgq base base-devel | sort) | column
+comm -23 <(comm -23 <(pacman -Qtq) <(pacman -Qgq base base-devel | sort)) <(cat /etc/argon/tup-remove | sort) > /etc/argon/tup-temp
+cat /etc/argon/tup-add >> /etc/argon/tup-temp
+cat /etc/argon/tup-temp | sort | column
 echo ""
 echo "------------------------------------"
 echo "close this window to return to Argon"
