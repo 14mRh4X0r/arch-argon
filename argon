@@ -4,10 +4,10 @@ from gi.repository import Gtk, Vte, Gdk
 from gi.repository import GLib
 import os
 
+os.system("argon-list")
+
 def windestroysig():
     Gtk.Window.destroy()
-
-
 
 class GridWindow(Gtk.Window):
 
@@ -31,7 +31,7 @@ class GridWindow(Gtk.Window):
         self.button2 = Gtk.Button("Remove")
         self.button2.connect("clicked", self.button2sig)
 
-        self.button5 = Gtk.Button("TUP List")
+        self.button5 = Gtk.Button("Top-level Packages")
         self.button5.connect("clicked", self.button5sig)
 
         self.button3 = Gtk.Button("Configure Notifier")
@@ -101,25 +101,24 @@ class GridWindow(Gtk.Window):
     def button5sig(self, configalter):
         self.entry1.set_text("")
         self.entry2.set_text("")
-
-        listterminal     = Vte.Terminal()
-        listterminal.fork_command_full(
-            Vte.PtyFlags.DEFAULT,
-            os.environ['HOME'],
-            ["/usr/bin/argon-list"],
-            [],
-            GLib.SpawnFlags.DO_NOT_REAP_CHILD,
-            None,
-            None,
-            )
-        listwin = Gtk.Window(title="Argon - TUP List")
+        os.system("argon-list")
+        def file_get_contents(filename):
+            with open(filename) as f:
+                return f.read()
+        top = file_get_contents('/etc/argon/top-final')
+        listbox = Gtk.TextView()
+        listbox.set_cursor_visible(False)
+        textbuffer = listbox.get_buffer()
+        textbuffer.set_text(top)
+        listwin = Gtk.Window(title="Top-level Packages")
+        listwin.set_default_size(400,400)
+        listwinscroll = Gtk.ScrolledWindow()
         listwin.set_icon_from_file('/usr/share/argon/argon.png')
         listwin.set_position(Gtk.WindowPosition.CENTER)
         listwin.connect('delete-event', windestroysig)
-        listwin.add(listterminal)
+        listwinscroll.add(listbox)
+        listwin.add(listwinscroll)
         listwin.show_all()
-        listterminal.set_color_foreground_rgba(Gdk.RGBA(.09, .58, .82, 1))
-        listterminal.set_color_background_rgba(Gdk.RGBA(0, 0, 0, 1))
 
     def button3sig(self, configalter):
         os.system("argon-notifier-config&")
