@@ -1,11 +1,16 @@
 #!/bin/bash
-echo "--------------------"
-echo "Package Installation"
-echo "--------------------"
+echo "    ,"
+echo "   /-\\--------------------------"
+echo "  //_\\\\   Package Installation  \\"
+echo " /// \\\\\\--------------------------"
+echo "/.-' '-.\\"
 echo ""
 package=$(</etc/argon/package)
 pacaur -S $package
 echo ""
-echo "------------------------------------"
-echo "close this window to return to Argon"
-echo "------------------------------------"
+echo "    ,"
+echo "   /-\\-----------------------------------------------------"
+echo "  //_\\\\   process complete, you may now close this window  \\"
+echo " /// \\\\\\-----------------------------------------------------"
+echo "/.-' '-.\\"
+

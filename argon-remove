@@ -1,11 +1,15 @@
 #!/bin/bash
-echo "---------------"
-echo "Package Removal"
-echo "---------------"
+echo "    ,"
+echo "   /-\\---------------------"
+echo "  //_\\\\   Package Removal  \\"
+echo " /// \\\\\\---------------------"
+echo "/.-' '-.\\"
 echo ""
 package=$(</etc/argon/package)
 pacaur -Rs $package
 echo ""
-echo "------------------------------------"
-echo "close this window to return to Argon"
-echo "------------------------------------"
+echo "    ,"
+echo "   /-\\-----------------------------------------------------"
+echo "  //_\\\\   process complete, you may now close this window  \\"
+echo " /// \\\\\\-----------------------------------------------------"
+echo "/.-' '-.\\"

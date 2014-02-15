@@ -1,23 +1,28 @@
 #!/bin/bash
-echo "-------------"
-echo "System Update"
-echo "-------------"
+echo "    ,"
+echo "   /-\\-------------------"
+echo "  //_\\\\   System Update  \\"
+echo " /// \\\\\\-------------------"
+echo "/.-' '-.\\"
 echo ""
 pacaur -Syu
 IFS=$'\r\n' config=($(cat /etc/argon/config))
-updates=$((checkupdates && cower -u) | wc -l)
-if [[ $updates == 1 ]]; then
- updateword="update"
+ updates=$((checkupdates && cower -u) | wc -l)
+ if [[ $updates == 1 ]]; then
+  updateword="update"
+  else
+  updateword="updates"
+ fi
+ IFS=$'\r\n' config=($(cat /etc/argon/config | sed "s/NUM/${updates}/" | sed "s/UPD/${updateword}/"))
+ if [[ $updates == 0 ]]; then
+   notify-send --hint=int:transient:1 -a Argon -i ${config[5]} ${config[3]}
  else
- updateword="updates"
-fi
-IFS=$'\r\n' config=($(cat /etc/argon/config | sed "s/NUM/${updates}/" | sed "s/UPD/${updateword}/"))
-if [[ $updates == 0 ]]; then
- notify-send --hint=int:transient:1 -a Argon -i ${config[5]} ${config[3]}
-else
   notify-send --hint=int:transient:1 -a Argon -i ${config[4]} ${config[2]}
-fi
+ fi
 echo ""
-echo "------------------------------------"
-echo "close this window to return to Argon"
-echo "------------------------------------"
+echo "    ,"
+echo "   /-\\-----------------------------------------------------"
+echo "  //_\\\\   process complete, you may now close this window  \\"
+echo " /// \\\\\\-----------------------------------------------------"
+echo "/.-' '-.\\"
+
