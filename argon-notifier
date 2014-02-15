@@ -13,11 +13,11 @@ if [[ $online == 0 ]]; then
  IFS=$'\r\n' config=($(cat /etc/argon/config | sed "s/NUM/${updates}/" | sed "s/UPD/${updateword}/"))
  if [[ $updates == 0 ]]; then
   if [[ ${config[6]} == "True" ]]; then
-   notify-send -i ${config[5]} ${config[3]}
+   notify-send --hint=int:transient:1 -a Argon -i ${config[5]} ${config[3]}
   fi
   sleep ${config[1]}
  else
-  notify-send -i ${config[4]} ${config[2]}
+  notify-send --hint=int:transient:1 -a Argon -i ${config[4]} ${config[2]}
   sleep ${config[1]}
  fi
 else
