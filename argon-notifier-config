@@ -150,7 +150,7 @@ class GridWindow(Gtk.Window):
         for item in config:
             configfile.write("%s\n" % item)
         self.spinbutton1.set_value(60)
-        self.spinbutton2.set_value(28800)
+        self.spinbutton2.set_value(10800)
         self.entry1.set_text("NUM system UPD available")
         self.entry2.set_text("Arch Linux is up to date")
         self.button1.set_label("/usr/share/argon/arch-stale.png")
