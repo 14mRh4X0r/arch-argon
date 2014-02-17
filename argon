@@ -110,7 +110,7 @@ class GridWindow(Gtk.Window):
         listbox.set_cursor_visible(False)
         textbuffer = listbox.get_buffer()
         textbuffer.set_text(top)
-        listwin = Gtk.Window(title="Top-level Packages")
+        listwin = Gtk.Window(title="Argon - Top-level Package List")
         listwin.set_default_size(400,400)
         listwinscroll = Gtk.ScrolledWindow()
         listwin.set_icon_from_file('/usr/share/argon/argon.png')
