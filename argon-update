@@ -6,19 +6,6 @@ echo " /// \\\\\\-------------------"
 echo "/.-' '-.\\"
 echo ""
 pacaur -Syu
-IFS=$'\r\n' config=($(cat /etc/argon/config))
- updates=$((checkupdates && cower -u) | wc -l)
- if [[ $updates == 1 ]]; then
-  updateword="update"
-  else
-  updateword="updates"
- fi
- IFS=$'\r\n' config=($(cat /etc/argon/config | sed "s/NUM/${updates}/" | sed "s/UPD/${updateword}/"))
- if [[ $updates == 0 ]]; then
-   notify-send --hint=int:transient:1 -a Argon -i ${config[5]} ${config[3]}
- else
-  notify-send --hint=int:transient:1 -a Argon -i ${config[4]} ${config[2]}
- fi
 echo ""
 echo "    ,"
 echo "   /-\\-----------------------------------------------------"
