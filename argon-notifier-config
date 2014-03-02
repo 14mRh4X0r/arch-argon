@@ -164,7 +164,11 @@ class GridWindow(Gtk.Window):
         config[0] = self.spinbutton1.get_value_as_int()
         config[1] = self.spinbutton2.get_value_as_int()
         config[2] = self.entry1.get_text()
+        if config[2] == "":
+            config[2] = " "
         config[3] = self.entry2.get_text()
+        if config[3] == "":
+            config[3] = " "
         config[4] = self.button1.get_label()
         config[5] = self.button2.get_label()
         config[6] = self.check.get_active()

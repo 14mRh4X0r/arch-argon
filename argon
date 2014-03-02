@@ -3,8 +3,16 @@
 from gi.repository import Gtk, Vte, Gdk
 from gi.repository import GLib
 import os
+from os.path import expanduser
 
-os.system("argon-list")
+topaddpath = os.path.expanduser('~/.config/argon/top-add')
+topremovepath = os.path.expanduser('~/.config/argon/top-remove')
+if not os.path.exists(os.path.expanduser('~/.config/argon')):
+    os.makedirs(os.path.expanduser('~/.config/argon'))
+if not os.path.exists(os.path.expanduser('~/.config/argon/top-add')):
+    os.system('touch %s' % (topaddpath))
+if not os.path.exists(os.path.expanduser('~/.config/argon/top-remove')):
+    os.system('touch %s' % (topremovepath))
 
 def windestroysig():
     Gtk.Window.destroy()
@@ -101,6 +109,10 @@ class GridWindow(Gtk.Window):
     def button5sig(self, configalter):
         self.entry1.set_text("")
         self.entry2.set_text("")
+        if os.path.exists(os.path.expanduser('~/.config/argon/top-add')):
+            os.system('cat %s > /etc/argon/top-add' % (topaddpath))
+        if os.path.exists(os.path.expanduser('~/.config/argon/top-remove')):
+            os.system('cat %s > /etc/argon/top-remove' % (topremovepath))
         os.system("argon-list")
         def file_get_contents(filename):
             with open(filename) as f:

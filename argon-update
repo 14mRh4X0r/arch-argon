@@ -6,6 +6,8 @@ echo " /// \\\\\\-------------------"
 echo "/.-' '-.\\"
 echo ""
 pacaur -Syu
+IFS=$'\r\n' config=($(cat /etc/argon/config))
+echo ${config[3]} > /etc/argon/message
 echo ""
 echo "    ,"
 echo "   /-\\-----------------------------------------------------"
