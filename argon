@@ -76,8 +76,8 @@ class GridWindow(Gtk.Window):
         installwin.connect('delete-event', windestroysig)
         installwin.add(installterminal)
         installwin.show_all()
-        installterminal.set_color_foreground_rgba(Gdk.RGBA(.09, .58, .82, 1))
-        installterminal.set_color_background_rgba(Gdk.RGBA(0, 0, 0, 1))
+        installterminal.set_color_foreground(Gdk.RGBA(.09, .58, .82, 1))
+        installterminal.set_color_background(Gdk.RGBA(0, 0, 0, 1))
         self.entry1.set_text("")
         self.entry2.set_text("")
 
@@ -101,8 +101,8 @@ class GridWindow(Gtk.Window):
         removewin.connect('delete-event', windestroysig)
         removewin.add(removeterminal)
         removewin.show_all()
-        removeterminal.set_color_foreground_rgba(Gdk.RGBA(.09, .58, .82, 1))
-        removeterminal.set_color_background_rgba(Gdk.RGBA(0, 0, 0, 1))
+        removeterminal.set_color_foreground(Gdk.RGBA(.09, .58, .82, 1))
+        removeterminal.set_color_background(Gdk.RGBA(0, 0, 0, 1))
         self.entry1.set_text("")
         self.entry2.set_text("")
 
@@ -141,7 +141,7 @@ class GridWindow(Gtk.Window):
         self.entry1.set_text("")
         self.entry2.set_text("")
         updateterminal     = Vte.Terminal()
-        updateterminal.fork_command_full(
+        updateterminal.spawn_sync(
             Vte.PtyFlags.DEFAULT,
             os.environ['HOME'],
             ["/usr/bin/argon-update"],
@@ -157,8 +157,8 @@ class GridWindow(Gtk.Window):
         updatewin.connect('delete-event', windestroysig)
         updatewin.add(updateterminal)
         updatewin.show_all()
-        updateterminal.set_color_foreground_rgba(Gdk.RGBA(.09, .58, .82, 1))
-        updateterminal.set_color_background_rgba(Gdk.RGBA(0, 0, 0, 1))
+        updateterminal.set_color_foreground(Gdk.RGBA(.09, .58, .82, 1))
+        updateterminal.set_color_background(Gdk.RGBA(0, 0, 0, 1))
 
 win = GridWindow()
 win.connect("delete-event", Gtk.main_quit)
