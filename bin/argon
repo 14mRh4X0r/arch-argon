@@ -60,7 +60,7 @@ class GridWindow(Gtk.Window):
         package = self.entry1.get_text()
         os.system("echo %s > /etc/argon/package" % (package))
         installterminal     = Vte.Terminal()
-        installterminal.fork_command_full(
+        installterminal.spawn_sync(
             Vte.PtyFlags.DEFAULT,
             os.environ['HOME'],
             ["/usr/bin/argon-install"],
@@ -85,7 +85,7 @@ class GridWindow(Gtk.Window):
         package = self.entry2.get_text()
         os.system("echo %s > /etc/argon/package" % (package))
         removeterminal     = Vte.Terminal()
-        removeterminal.fork_command_full(
+        removeterminal.spawn_sync(
             Vte.PtyFlags.DEFAULT,
             os.environ['HOME'],
             ["/usr/bin/argon-remove"],
