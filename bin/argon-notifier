@@ -1,5 +1,5 @@
 #!/bin/bash
-mapfile config < /etc/argon/config
+mapfile -t config < /etc/argon/config
 
 sleep "${config[0]}"
 while true; do
@@ -20,7 +20,7 @@ while true; do
       sleep "${config[1]}"
     else
       updates_msg=${config[2]//NUM/$updates}
-      updates_msg=${config[2]//UPD/$updateword}
+      updates_msg=${updates_msg//UPD/$updateword}
       notify-send --hint=int:transient:1 -a Argon -i "${config[4]}" "$updates_msg"
       echo "${config[2]}" > /etc/argon/message
       sleep "${config[1]}"
