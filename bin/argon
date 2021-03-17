@@ -2,6 +2,7 @@
 
 from gi import require_version
 require_version('Gtk', '3.0')
+require_version('Vte', '2.91')
 from gi.repository import Gtk, Vte, Gdk
 from gi.repository import GLib
 import os
@@ -32,22 +33,27 @@ class GridWindow(Gtk.Window):
         self.entry1 = Gtk.Entry()
         self.entry1.connect("activate", self.button1sig)
 
-        self.button1 = Gtk.Button("Install")
+        self.button1 = Gtk.Button()
+        self.button1.set_label("Install")
         self.button1.connect("clicked", self.button1sig)
 
         self.entry2 = Gtk.Entry()
         self.entry2.connect("activate", self.button2sig)
 
-        self.button2 = Gtk.Button("Remove")
+        self.button2 = Gtk.Button()
+        self.button2.set_label("Remove")
         self.button2.connect("clicked", self.button2sig)
 
-        self.button5 = Gtk.Button("Top-level Packages")
+        self.button5 = Gtk.Button()
+        self.button5.set_label("Top-level Packages")
         self.button5.connect("clicked", self.button5sig)
 
-        self.button3 = Gtk.Button("Configure Notifier")
+        self.button3 = Gtk.Button()
+        self.button3.set_label("Configure Notifier")
         self.button3.connect("clicked", self.button3sig)
 
-        self.button4 = Gtk.Button("Update System")
+        self.button4 = Gtk.Button()
+        self.button4.set_label("Update System")
         self.button4.connect("clicked", self.button4sig)
 
         grid.add(self.entry1)
