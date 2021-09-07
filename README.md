@@ -80,7 +80,7 @@ Here's a sample notifier configuration with the "system is up to date" message l
 Powered By...
 -------------
 
-Argon uses pacman and [pacaur](https://aur.archlinux.org/packages/pacaur/) (which extends the functionality of pacman to the AUR) for package processing, checkupdates (a script included with pacman) and [cower](https://aur.archlinux.org/packages/cower/) to check for updates, and libnotify to send notifications.
+Argon uses pacman and [pacaur](https://aur.archlinux.org/packages/pacaur/) (which extends the functionality of pacman to the AUR) for package processing, checkupdates (a script included with pacman) and [auracle](https://aur.archlinux.org/packages/auracle-git/) to check for updates, and libnotify to send notifications.
 
 Commands
 --------
